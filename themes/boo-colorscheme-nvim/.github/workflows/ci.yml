@@ -1,0 +1,44 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions: read-all
+
+jobs:
+  appimage-ubuntu:
+    name: Appimage-ubuntu
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Set today's date
+        run: date +%F > todays-date
+
+      - name: Restore cache for today nightly.
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684
+        with:
+          path: |
+            build
+          key: ${{ runner.os }}-appimage-${{ hashFiles('todays-date') }}
+
+      - name: Prepare
+        run: |
+          test -d build || {
+            mkdir -p build
+            wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.appimage
+            chmod +x nvim-linux-x86_64.appimage
+            mv nvim-linux-x86_64.appimage ./build/nvim
+          }
+          mkdir -p ~/.local/share/nvim/site/pack/vendor/start
+          git clone --depth 1 https://github.com/nvim-lua/plenary.nvim ~/.local/share/nvim/site/pack/vendor/start/plenary.nvim
+          ln -s "$(pwd)" ~/.local/share/nvim/site/pack/vendor/start
+
+      - name: Run tests
+        run: |
+          export PATH="${PWD}/build/:${PATH}"
+          make test

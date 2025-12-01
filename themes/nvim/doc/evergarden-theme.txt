@@ -1,0 +1,77 @@
+
+------------------------------------------------------------------------------
+Class ~
+{evergarden.types.theme}
+Fields ~
+{none} `(string)` -- 'NONE'
+{colors} `(evergarden.types.colors)` -- copy of colors
+{text} `(string)`
+{subtext1} `(string)`
+{subtext0} `(string)`
+{overlay2} `(string)`
+{overlay1} `(string)`
+{overlay0} `(string)`
+{surface2} `(string)`
+{surface1} `(string)`
+{surface0} `(string)`
+{base} `(string)`
+{mantle} `(string)`
+{crust} `(string)`
+{red} `(string)`
+{orange} `(string)`
+{yellow} `(string)`
+{lime} `(string)`
+{green} `(string)`
+{aqua} `(string)`
+{skye} `(string)`
+{snow} `(string)`
+{blue} `(string)`
+{purple} `(string)`
+{pink} `(string)`
+{cherry} `(string)`
+{accent} `(string)`
+{editor} `(evergarden.types.editor)`
+{syntax} `(evergarden.types.syntax)`
+{diagnostic} `({ ['ok'|'error'|'warn'|'info'|'hint']: string })`
+{diff} `({ ['add'|'delete'|'change']: string })`
+{git} `({ ['staged'|'unstaged'|'ignored'|'untracked']: string })`
+{sign} `(string)`
+{comment} `(string)`
+
+------------------------------------------------------------------------------
+colors for different ui elements in the editor
+Class ~
+{evergarden.types.editor}
+Fields ~
+{search} `(string)`
+{float} `(string)`
+{completion} `(string)`
+
+------------------------------------------------------------------------------
+color definitions for syntax groups
+Class ~
+{evergarden.types.syntax}
+Fields ~
+{keyword} `(string)`
+{identifier} `(string)`
+{property} `(string)`
+{type} `(string)`
+{context} `(string)`
+{operator} `(string)`
+{constant} `(string)`
+{func} `(string)`
+{string} `(string)`
+{macro} `(string)`
+{annotation} `(string)`
+
+------------------------------------------------------------------------------
+                                                      *evergarden.theme.setup()*
+                  `evergarden.theme.setup`({config}, {colors})
+Parameters ~
+{config} `(optional)` `(evergarden.types.config)`
+{colors} `(optional)` `(evergarden.types.colors)`
+Return ~
+`(evergarden.types.theme)`
+
+
+ vim:tw=78:ts=8:noet:ft=help:norl:
