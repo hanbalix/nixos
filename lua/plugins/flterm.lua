@@ -53,3 +53,4 @@ end
 
 vim.api.nvim_create_user_command("Flterm", toggle_terminal, {})
 vim.api.nvim_set_keymap('n', '<leader>ft', [[:Flterm<CR>]], { noremap = true, silent = true })
+return {}

@@ -39,3 +39,4 @@ vim.keymap.set("n", "<leader>qq", function()
     reformat_parenthesized_content()
 end)
 
+return {}

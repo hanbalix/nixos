@@ -8,3 +8,4 @@ set.expandtab = true                   -- Tab → spaces (never real tabs)
 set.number = true                      -- Line numbers
 set.relativenumber = true              -- Relative numbers (j/k motions)
 
+return {}
