@@ -72,3 +72,10 @@ vim.keymap.set("n", "<leader>r", function()
     dofile(vim.fn.stdpath("config") .. "/init.lua")
 end, { desc = "Reload init.lua" })
 
+--live theme preview
+vim.keymap.set("n", "<leader>cs", function()
+    require('telescope.builtin').colorscheme({
+        enable_preview = true,  -- live preview themes as you select
+    })
+end, { desc = "Pick Colorscheme with Preview" })
+
