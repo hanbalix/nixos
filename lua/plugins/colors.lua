@@ -1,4 +1,5 @@
 local function enable_transparency()
+    -- Uncomment if you want transparency enabled by default
     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
@@ -44,152 +45,67 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     end,
 })
 
-return {
-    { "rose-pine/neovim", name = 'rose-pine', priority = 1000, config = function()
-        if load_saved_theme() == 'rose-pine' then
-            vim.cmd.colorscheme('rose-pine')
-        end
-        setup_theme()
-    end, },
-    { "Mofiqul/vscode.nvim", name = 'vscode', priority = 1000, config = function()
-        if load_saved_theme() == 'vscode' then
-            vim.cmd.colorscheme('vscode')
-        end
-        setup_theme()
-    end, },
-    { "folke/tokyonight.nvim", name = 'tokyonight', priority = 1000, config = function()
-        if load_saved_theme() == 'tokyonight' then
-            vim.cmd.colorscheme('tokyonight')
-        end
-        setup_theme()
-    end, },
-    { "neanias/everforest-nvim", name = 'everforest', priority = 1000, config = function()
-        if load_saved_theme() == 'everforest' then
-            vim.cmd.colorscheme('everforest')
-        end
-        setup_theme()
-    end, },
-    { "everviolet/nvim", name = 'everviolet', priority = 1000, config = function()
-        if load_saved_theme() == 'everviolet' then
-            vim.cmd.colorscheme('everviolet')
-        end
-        setup_theme()
-    end, },
-    { "catppuccin/nvim", name = 'catppuccin', priority = 1000, config = function()
-        if load_saved_theme() == 'catppuccin' then
-            vim.cmd.colorscheme('catppuccin')
-        end
-        setup_theme()
-    end, },
-    { "xero/miasma.nvim", name = 'miasma', priority = 1000, config = function()
-        if load_saved_theme() == 'miasma' then
-            vim.cmd.colorscheme('miasma')
-        end
-        setup_theme()
-    end, },
-    { "rebelot/kanagawa.nvim", name = 'kanagawa', priority = 1000, config = function()
-        if load_saved_theme() == 'kanagawa' then
-            vim.cmd.colorscheme('kanagawa')
-        end
-        setup_theme()
-    end, },
-    { "thesimonho/kanagawa-paper.nvim", name = 'kanagawa-paper', priority = 1000, config = function()
-        if load_saved_theme() == 'kanagawa-paper' then
-            vim.cmd.colorscheme('kanagawa-paper')
-        end
-        setup_theme()
-    end, },
-    { "ellisonleao/gruvbox.nvim", name = 'gruvbox', priority = 1000, config = function()
-        if load_saved_theme() == 'gruvbox' then
-            vim.cmd.colorscheme('gruvbox')
-        end
-        setup_theme()
-    end, },
-    { "luisiacc/gruvbox-baby", name = 'gruvbox-baby', priority = 1000, config = function()
-        if load_saved_theme() == 'gruvbox-baby' then
-            vim.cmd.colorscheme('gruvbox-baby')
-        end
-        setup_theme()
-    end, },
-    { "rmehri01/onenord.nvim", name = 'onenord', priority = 1000, config = function()
-        if load_saved_theme() == 'onenord' then
-            vim.cmd.colorscheme('onenord')
-        end
-        setup_theme()
-    end, },
-    { "alexvzyl/nordic.nvim", name = 'nordic', priority = 1000, config = function()
-        if load_saved_theme() == 'nordic' then
-            vim.cmd.colorscheme('nordic')
-        end
-        setup_theme()
-    end, },
-    { "savq/melange-nvim", name = 'melange', priority = 1000, config = function()
-        if load_saved_theme() == 'melange' then
-            vim.cmd.colorscheme('melange')
-        end
-        setup_theme()
-    end, },
-    { "jacoborus/tender.vim", name = 'tender', priority = 1000, config = function()
-        if load_saved_theme() == 'tender' then
-            vim.cmd.colorscheme('tender')
-        end
-        setup_theme()
-    end, },
-    { "bluz71/vim-moonfly-colors", name = 'moonfly', priority = 1000, config = function()
-        if load_saved_theme() == 'moonfly' then
-            vim.cmd.colorscheme('moonfly')
-        end
-        setup_theme()
-    end, },
-    { "bluz71/vim-nightfly-colors", name = 'nightfly', priority = 1000, config = function()
-        if load_saved_theme() == 'nightfly' then
-            vim.cmd.colorscheme('nightfly')
-        end
-        setup_theme()
-    end, },
-    { "vague-theme/vague.nvim", name = 'vague', priority = 1000, config = function()
-        if load_saved_theme() == 'vague' then
-            vim.cmd.colorscheme('vague')
-        end
-        setup_theme()
-    end, },
-    { "olivercederborg/poimandres.nvim", name = 'poimandres', priority = 1000, config = function()
-        if load_saved_theme() == 'poimandres' then
-            vim.cmd.colorscheme('poimandres')
-        end
-        setup_theme()
-    end, },
-    { "rockerboo/boo-colorscheme-nvim", name = 'boo', priority = 1000, config = function()
-        if load_saved_theme() == 'boo' then
-            vim.cmd.colorscheme('boo')
-        end
-        setup_theme()
-    end, },
-    { "datsfilipe/vesper.nvim", name = 'vesper', priority = 1000, config = function()
-        if load_saved_theme() == 'vesper' then
-            vim.cmd.colorscheme('vesper')
-        end
-        setup_theme()
-    end, },
-    { "ramojus/mellifluous.nvim", name = 'mellifluous', priority = 1000, config = function()
-        if load_saved_theme() == 'mellifluous' then
-            vim.cmd.colorscheme('mellifluous')
-        end
-        setup_theme()
-    end, },
-
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            require('lualine').setup({
-                options = {
-                    theme = 'auto',
-                },
-            })
-        end,
-    },
+local themes = {
+    { "rose-pine/neovim", name = 'rose-pine', priority = 1000 },
+    { "Mofiqul/vscode.nvim", name = 'vscode', priority = 1000 },
+    { "folke/tokyonight.nvim", name = 'tokyonight', priority = 1000 },
+    { "neanias/everforest-nvim", name = 'everforest', priority = 1000 },
+    { "everviolet/nvim", name = 'everviolet', priority = 1000 },
+    { "catppuccin/nvim", name = 'catppuccin', priority = 1000 },
+    { "xero/miasma.nvim", name = 'miasma', priority = 1000 },
+    { "rebelot/kanagawa.nvim", name = 'kanagawa', priority = 1000 },
+    { "thesimonho/kanagawa-paper.nvim", name = 'kanagawa-paper', priority = 1000 },
+    { "ellisonleao/gruvbox.nvim", name = 'gruvbox', priority = 1000 },
+    { "luisiacc/gruvbox-baby", name = 'gruvbox-baby', priority = 1000 },
+    { "rmehri01/onenord.nvim", name = 'onenord', priority = 1000 },
+    { "alexvzyl/nordic.nvim", name = 'nordic', priority = 1000 },
+    { "savq/melange-nvim", name = 'melange', priority = 1000 },
+    { "jacoborus/tender.vim", name = 'tender', priority = 1000 },
+    { "bluz71/vim-moonfly-colors", name = 'moonfly', priority = 1000 },
+    { "bluz71/vim-nightfly-colors", name = 'nightfly', priority = 1000 },
+    { "vague-theme/vague.nvim", name = 'vague', priority = 1000 },
+    { "olivercederborg/poimandres.nvim", name = 'poimandres', priority = 1000 },
+    { "rockerboo/boo-colorscheme-nvim", name = 'boo', priority = 1000 },
+    { "datsfilipe/vesper.nvim", name = 'vesper', priority = 1000 },
+    { "ramojus/mellifluous.nvim", name = 'mellifluous', priority = 1000 },
 }
+
+-- Add setup config for each theme to call setup_theme on load
+for _, theme in ipairs(themes) do
+    theme.config = function() setup_theme() end
+end
+
+-- Return plugin specs normally (do not apply colorscheme here)
+table.insert(themes, {
+    "nvim-lualine/lualine.nvim",
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+        require('lualine').setup({
+            options = { theme = 'auto' },
+        })
+    end,
+})
+
+-- Function to load saved colorscheme after all plugins
+local function apply_saved_colorscheme()
+    local theme = load_saved_theme()
+    if theme then
+        local ok, err = pcall(vim.cmd.colorscheme, theme)
+        if not ok then
+            print("Warning: Failed to load saved colorscheme: " .. theme)
+        else
+            setup_theme()
+        end
+    else
+        vim.cmd.colorscheme('rose-pine')
+        setup_theme()
+    end
+end
+
+-- Schedule applying the saved colorscheme to run after startup
+vim.schedule(apply_saved_colorscheme)
+
+return themes
 
