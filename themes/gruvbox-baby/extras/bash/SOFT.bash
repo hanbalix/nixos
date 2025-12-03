@@ -1,1 +1,0 @@
-../tmux/SOFT.tmux
