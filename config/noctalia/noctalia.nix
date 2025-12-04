@@ -1,41 +1,51 @@
-{
-    description = "NixOs";
-    inputs = {
-        nixpkgs.url = "nixpkgs/nixos-25.11";
-        nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-        home-manager = {
-            url = "github:nix-community/home-manager/release-25.11";
-            inputs.nixpkgs.follows = "nixpkgs";
+# noctalia.nix (separate module)
+{ config, pkgs, self, ... }:
+let
+  inputs = self.inputs;
+in {
+  programs.noctalia-shell = {
+    enable = true;
+    settings = {
+      bar = {
+        density = "compact";
+        position = "right";
+        showCapsule = false;
+        widgets = {
+          left = [
+            { id = "ControlCenter"; useDistroLogo = true; }
+            { id = "WiFi"; }
+            { id = "Bluetooth"; }
+          ];
+          center = [
+            { hideUnoccupied = false; id = "Workspace"; labelMode = "none"; }
+          ];
+          right = [
+            { alwaysShowPercentage = false; id = "Battery"; warningThreshold = 30; }
+            { formatHorizontal = "HH:mm"; id = "Clock"; useMonospacedFont = true; usePrimaryColor = true; }
+          ];
         };
-        quickshell = {
-            url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-            inputs.nixpkgs.follows = "nixpkgs-unstable";
-        };
-        noctalia = {
-            url = "github:noctalia-dev/noctalia-shell";
-            inputs.nixpkgs.follows = "nixpkgs-unstable";
-            inputs.quickshell.follows = "quickshell";
-        };
+      };
+      colorSchemes.predefinedScheme = "Monochrome";
+      general = {
+        avatarImage = "/home/x/.face";
+        radiusRatio = 0.2;
+      };
+      location = {
+        monthBeforeDay = true;
+        name = "Your City";
+      };
     };
+  };
 
-    outputs = { self, nixpkgs, home-manager, quickshell, noctalia, ... }: {
-        nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-                ./configuration.nix
-                home-manager.nixosModules.home-manager
-                ./noctalia.nix
-                {
-                    home-manager = {
-                        useGlobalPkgs = true;
-                        useUserPackages = true;
-                        users.x = import ./home.nix;
-                        backupFileExtension = "backup";
-                    };
-                }
-            ];
-        };
-    };
+  home.packages = with pkgs; [
+    quickshell
+    roboto
+    noto-fonts
+    gpu-screen-recorder
+    brightnessctl
+    cliphist
+    cava
+    wlsunset
+  ];
 }
 

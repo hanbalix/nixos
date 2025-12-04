@@ -7,6 +7,8 @@
       ./hardware-configuration.nix
     ];
 
+  services.noctalia-shell.enable = true;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -14,6 +16,11 @@
   
   networking.hostName = "nix";
   networking.networkmanager.enable = true;
+  
+  # for noctalia-shell
+  hardware.bluetooth.enable = true;
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
 
 
   time.timeZone = "America/Chicago";

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
     dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
@@ -8,6 +8,9 @@ in {
     home.homeDirectory = "/home/x";
     home.stateVersion = "25.11";
 
+    imports = [
+    ./config/noctalia/noctalia.nix
+    ];
 
     programs.git = {
       enable = true;
@@ -24,6 +27,11 @@ in {
 
     xdg.configFile."nvim" = {
         source = create_symlink "${dotfiles}/nvim/";
+        recursive = true;
+    };
+
+    xdg.configFile."noctalia" = {
+        source = create_symlink "${dotfiles}/noctalia/";
         recursive = true;
     };
 
