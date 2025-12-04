@@ -22,7 +22,6 @@
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
 
-
   time.timeZone = "America/Chicago";
   # Enable sound.
   # services.pulseaudio.enable = true;
@@ -60,6 +59,7 @@
    git
    wget
    alacritty
+   papirus-icon-theme
    ghostty
    fuzzel
    brave
@@ -79,6 +79,7 @@
    fonts.packages = with pkgs; [
        nerd-fonts.jetbrains-mono
    ];
+
 
    nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

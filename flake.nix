@@ -32,7 +32,6 @@
             users.x = import ./home.nix;
             backupFileExtension = "backup";
             extraSpecialArgs = { inherit self; };
-            sharedModules = [ noctalia.homeManagerModules.default ];
           };
         }
       ];

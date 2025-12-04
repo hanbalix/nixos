@@ -1,43 +1,7 @@
-# noctalia.nix (separate module)
-{ config, pkgs, self, ... }:
-let
-  inputs = self.inputs;
-in {
-  programs.noctalia-shell = {
-    enable = true;
-    settings = {
-      bar = {
-        density = "compact";
-        position = "right";
-        showCapsule = false;
-        widgets = {
-          left = [
-            { id = "ControlCenter"; useDistroLogo = true; }
-            { id = "WiFi"; }
-            { id = "Bluetooth"; }
-          ];
-          center = [
-            { hideUnoccupied = false; id = "Workspace"; labelMode = "none"; }
-          ];
-          right = [
-            { alwaysShowPercentage = false; id = "Battery"; warningThreshold = 30; }
-            { formatHorizontal = "HH:mm"; id = "Clock"; useMonospacedFont = true; usePrimaryColor = true; }
-          ];
-        };
-      };
-      colorSchemes.predefinedScheme = "Monochrome";
-      general = {
-        avatarImage = "/home/x/.face";
-        radiusRatio = 0.2;
-      };
-      location = {
-        monthBeforeDay = true;
-        name = "Your City";
-      };
-    };
-  };
-
+{ config, pkgs, self, ... }:  # self already passed via extraSpecialArgs
+{
   home.packages = with pkgs; [
+    (self.inputs.noctalia.packages.${pkgs.system}.default)  # ✅ Via self.inputs
     quickshell
     roboto
     noto-fonts
