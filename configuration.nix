@@ -123,8 +123,8 @@ programs.dconf.enable = true;
   #garbage collecting
    nix.gc = {
      automatic = true;
-     dates = "daily";
-     options = "--delete-older-than 5d";
+     dates = "weekly";
+     options = "--delete-older-than 30d";
    };
   # networkmanager = {
    #  wifi.backend = "wpa_supplicant";

@@ -43,6 +43,12 @@ in {
         source = create_symlink "${dotfiles}/noctalia/";
         recursive = true;
     };
+    xdg.configFile."niri" = {
+        source = create_symlink "${dotfiles}/niri/";
+        recursive = true;
+    };
+
+
 
     # Clipboard Manager
     services.cliphist = {

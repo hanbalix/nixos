@@ -54,7 +54,7 @@
                     "enableColorization": false,
                     "icon": "noctalia",
                     "id": "ControlCenter",
-                    "useDistroLogo": false
+                    "useDistroLogo": true
                 },
                 {
                     "diskPath": "/",
@@ -136,6 +136,10 @@
                     "id": "Clock",
                     "useCustomFont": false,
                     "usePrimaryColor": false
+                },
+                {
+                    "colorName": "error",
+                    "id": "SessionMenu"
                 }
             ]
         }
