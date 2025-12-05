@@ -3,7 +3,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./t14/hardware-configuration.nix
 #      ./config/xdg/xdg.nix
     ];
 
@@ -39,7 +39,7 @@ programs.dconf.enable = true;
 
     
   # Enable touchpad support (enabled default in most desktopManager).
-   services.libinput.enable = true;
+  services.libinput.enable = true;
 
    users.users.x = {
    isNormalUser = true;
@@ -57,15 +57,7 @@ programs.dconf.enable = true;
    ];
    };
 
- #  home-manager = {
-      # useGlobalPkgs = true;
-     #  useUserPackages = true;
-   #    extraSpecialArgs = { inherit inputs; };
-    #   users = {
-  #       "x" = import ./home.nix; -- input my config folder
-  #    };
-  #   };
-  #keyboard repeater
+  #keyboard repeat rate
   services.xserver = {
       enable = true;
       autoRepeatDelay = 200;
@@ -84,6 +76,7 @@ programs.dconf.enable = true;
    alacritty
    #papirus-icon-theme
    ghostty
+   pkgs.unzip
    kdePackages.dolphin
    kdePackages.systemsettings
    fuzzel
@@ -121,8 +114,8 @@ programs.dconf.enable = true;
        roboto
        noto-fonts
        noto-fonts-color-emoji
-       # material-symbols
-       # material-icons
+       material-symbols
+       material-icons
    ];
 
 
@@ -145,9 +138,7 @@ services.keyd = {
 };
 
 
-   #disables user level packages in homemanager, uses global
-   home-manager.useGlobalPkgs = true;
-   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+   # home-manager.useGlobalPkgs = true;
   #garbage collecting
    nix.gc = {
      automatic = true;
@@ -162,6 +153,7 @@ services.keyd = {
 
    #hardware.enableRedstributableFirmware = true;
 
+   nix.settings.experimental-features = [ "nix-command" "flakes" ];
    system.stateVersion = "25.11";
 
 }

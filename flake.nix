@@ -30,13 +30,13 @@
       system = "x86_64-linux";
       specialArgs = { inherit self nixpkgs home-manager inputs; };
       modules = [
-        ./configuration.nix  
+        ./nixos/configuration.nix  
         home-manager.nixosModules.default
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.x = import ./home.nix;
+            users.x = import ./home-manager/home.nix;
             backupFileExtension = "backup";
           };
         }

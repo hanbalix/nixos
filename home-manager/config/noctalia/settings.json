@@ -50,7 +50,7 @@
                 {
                     "colorizeDistroLogo": false,
                     "colorizeSystemIcon": "none",
-                    "customIconPath": "",
+                    "customIconPath": "/home/x/assets/icons/nix-lavender.png",
                     "enableColorization": false,
                     "icon": "noctalia",
                     "id": "ControlCenter",
@@ -408,7 +408,7 @@
         "code": false,
         "discord": false,
         "emacs": false,
-        "enableUserTemplates": false,
+        "enableUserTemplates": true,
         "foot": false,
         "fuzzel": true,
         "ghostty": false,
