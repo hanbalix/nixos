@@ -86,6 +86,7 @@ in {
         yazi
 
         # utilities
+        distrobox
         wlsunset
         gpu-screen-recorder
         mpv
