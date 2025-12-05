@@ -52,7 +52,7 @@ in {
     };
 
 
-    # Clipboard Manager
+    # Clipboard Manager - niri
     services.cliphist = {
       enable = true;
       allowImages = true;
@@ -67,47 +67,74 @@ in {
 
 
     home.packages = with pkgs; [
+    	alacritty
+	ghostty
+	distrobox
         #nvim +dependencies
         neovim
         ripgrep
         nil
         gcc
         nodejs
-        #development
-        go
-        gopls
-        python3
-        nixpkgs-fmt
+	nixpkgs-fmt
 
-        #CLI
-        htop
-        jq
-        zoxide #better cd
-        starship
-        bat
-        fastfetch
-        nerdfetch
-        yazi
-        tmux
-        eza
-        fd
-        yazi
+	go
+	gopls
+	python3
 
-        # utilities
-        distrobox
-        wlsunset
-        gpu-screen-recorder
-        mpv
-        brave
-        qview
-        # niri
-        xwayland-satellite
-        wl-clipboard
-        # inputs.noctalia.packages.${system}.default
-    ];
+  	# Terminal & Shell Tools
+  	htop
+ 	jq
+	zoxide
+	starship
+	bat
+	fastfetch
+	nerdfetch
+	yazi
+	tmux
+	eza
+	fd
+	tree
+#	wl-clipboard
+
+	# File Managers
+	kdePackages.dolphin
+
+	#niri
+	fuzzel
+	swaybg
+	swaylock
+  	xwayland-satellite
+	gpu-screen-recorder
+	wlsunset
+	cava
+#	ddcutil #desktop only
+
+	# Theme & Style Configuration
+  	kdePackages.qt6ct
+  	pkgs.libsForQt5.qt5ct
+  	kdePackages.breeze
+  	kdePackages.breeze-gtk
+  	kdePackages.systemsettings
+
+  	# Audio Control
+  	pavucontrol
+  	pulseaudio
+  	playerctl
+
+  	# System Utilities
+  	networkmanagerapplet
+	pkgs.unzip
+	polkit_gnome
+
+ 	# Media & Applications
+	mpv
+	brave
+	firefox
+  	qview
+];
     #need to activate it from config, defines per-user configs
     #programs.home-manager.enable = true;
-
 
   #
   # services.flatpak = {
