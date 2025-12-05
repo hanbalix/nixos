@@ -127,10 +127,7 @@
   # Niri: wayland compositor/window manager
   programs.niri.enable = true;
 
-  # XWayland: run X11 apps under Wayland (compatibility layer)
-  environment.systemPackages = [ pkgs.xwayland ];
 
-  # ============================================================================
   # DESKTOP ENVIRONMENT & APPLICATIONS
   # ============================================================================
 
