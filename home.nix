@@ -47,7 +47,9 @@ in {
         source = create_symlink "${dotfiles}/niri/";
         recursive = true;
     };
-
+    xdg.configFile."keyd" = {
+        source = create_symlink "${dotfiles}/keyd/";
+    };
 
 
     # Clipboard Manager

@@ -219,9 +219,6 @@
                 },
                 {
                     "id": "WallpaperSelector"
-                },
-                {
-                    "id": "WiFi"
                 }
             ],
             "right": [
@@ -438,7 +435,7 @@
         "tooltipsEnabled": true
     },
     "wallpaper": {
-        "directory": "/home/x/Pictures/Wallpapers",
+        "directory": "/home/x/Pictures/walls",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "fillColor": "#000000",

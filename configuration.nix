@@ -35,7 +35,9 @@ programs.dconf.enable = true;
    alsa.enable = true;
    alsa.support32Bit =true;
    };
+    
 
+    
   # Enable touchpad support (enabled default in most desktopManager).
    services.libinput.enable = true;
 
@@ -48,6 +50,7 @@ programs.dconf.enable = true;
      "i2c"
      "video"
      "input"
+     "keyd"
    ]; # Enable ‘sudo’ for the user.
    packages = with pkgs; [
    tree
@@ -79,16 +82,21 @@ programs.dconf.enable = true;
    git
    wget
    alacritty
-   papirus-icon-theme
+   #papirus-icon-theme
    ghostty
    kdePackages.dolphin
+   kdePackages.systemsettings
    fuzzel
    kanata
    pavucontrol #pulseaudio volume control
    pulseaudio
    swaybg
    swaylock
-   gnome-themes-extra
+   #gnome-themes-extra
+   kdePackages.breeze-gtk
+   kdePackages.breeze
+   kdePackages.qt6ct
+   pkgs.libsForQt5.qt5ct
    nodePackages.prettier #makes code prettier
    xwayland
    playerctl
@@ -113,9 +121,29 @@ programs.dconf.enable = true;
        roboto
        noto-fonts
        noto-fonts-color-emoji
-       material-symbols
-       material-icons
+       # material-symbols
+       # material-icons
    ];
+
+
+services.keyd = {
+    enable = true;
+    keyboards.default = {
+        ids = [ "*" ];
+        settings = {
+            main = {
+                shift = "oneshot(shift)";
+                meta = "oneshot(meta)";
+                control = "oneshot(control)";
+                leftalt = "oneshot(alt)";
+                rightalt = "oneshot(altgr)";
+                capslock = "overload(control, esc)";
+                insert = "S-insert";
+            };
+        };
+    };
+};
+
 
    #disables user level packages in homemanager, uses global
    home-manager.useGlobalPkgs = true;
