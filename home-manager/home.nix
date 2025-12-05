@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 #symlink for a copy of my dot files
 let
-    dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/home-manager-config";
+    dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/home-manager/config";
     create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 in {
     home.username = "x";
