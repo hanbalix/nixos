@@ -10,7 +10,7 @@
 
 
     #packages
-    #
+    # nix-flatpak.url = "github:gmodena/nix-flatpak";
     matugen.url = "github:InioX/matugen";
 
    # niri.url = "github:sodiboo/niri-flake";
@@ -24,15 +24,14 @@
     url = "github:noctalia-dev/noctalia-shell";
     inputs.nixpkgs.follows = "nixpkgs";
   };
-}; #removed noctalia output
+};
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit self nixpkgs home-manager inputs; };
       modules = [
-        ./configuration.nix #maybe change this to the copied path
+        ./configuration.nix  
         home-manager.nixosModules.default
-       # noctalia.nixosModules.default
         {
           home-manager = {
             useGlobalPkgs = true;

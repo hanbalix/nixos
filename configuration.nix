@@ -5,27 +5,20 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
 #      ./config/xdg/xdg.nix
-      #  inputs.home-manager.nixosModules.default
-      #
-      # xdg.nig from my config clone folder etc
-      #
     ];
 
 security.polkit.enable = true;
 programs.dconf.enable = true;
 
-  #i had this before
-  #services.noctalia-shell.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
 
-  # supportedFilesystems = [ "btrfs" ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos";
+  networking.hostName = "nix";
   networking.networkmanager.enable = true;
 
   # for noctalia-shell
@@ -36,7 +29,6 @@ programs.dconf.enable = true;
   time.timeZone = "America/Chicago";
   # Enable sound.
   # services.pulseaudio.enable = true;
-  # OR
    services.pipewire = {
    enable = true;
    pulse.enable = true;
@@ -47,7 +39,6 @@ programs.dconf.enable = true;
   # Enable touchpad support (enabled default in most desktopManager).
    services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.x = {
    isNormalUser = true;
    extraGroups = [
@@ -77,12 +68,12 @@ programs.dconf.enable = true;
       autoRepeatDelay = 200;
       autoRepeatInterval = 35;
  };
- services.displayManager.ly.enable = true;
+  services.displayManager.ly.enable = true;
   programs.niri.enable = true;
   programs.firefox.enable = true;
   services.flatpak.enable = true;
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
+
+
   environment.systemPackages = with pkgs; [
    vim
    git
@@ -90,12 +81,13 @@ programs.dconf.enable = true;
    alacritty
    papirus-icon-theme
    ghostty
+   kdePackages.dolphin
    fuzzel
    kanata
    pavucontrol #pulseaudio volume control
    pulseaudio
-   #networkmanagerapplet #waybar networking control
    swaybg
+   swaylock
    gnome-themes-extra
    nodePackages.prettier #makes code prettier
    xwayland
@@ -109,32 +101,11 @@ programs.dconf.enable = true;
    networkmanagerapplet
 ];
 
-   #    description = "chris";
- #   the guy put both of these under his user wheel
- #  shell = pkgs.nushell;
-  # environment.systemPackages = [
-   #  pkgs.zsh
-  # ];
    programs.zsh.enable = true;
-#dbus threw errors
-   # dbus.enable = true;
-   # dbus.packages = with pkgs; [ bluez ];
 
    # power-profiles-daemon.enable = true;
-   # printing.enable = true;
-   # gvfs.enable = true;
    services.tumbler.enable = true;
 
-   #for bluetooth
-   # hardware.bluetooth = {
-   #   enable = true;
-   #   package = pkgs.bluez;
-   #   input.General.ClassicBondedOnly = false;
-   # };
-   #
-   # environment.systemPackages = with pkgs; [
-   #   bluez
-   # ];
 
    fonts.packages = with pkgs; [
        nerd-fonts.jetbrains-mono

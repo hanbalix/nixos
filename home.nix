@@ -1,4 +1,4 @@
-{ config, pkgs,  ... }:
+{ config, pkgs, ... }:
 #symlink for a copy of my dot files
 let
     dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
@@ -14,9 +14,6 @@ in {
     #zoxide
     # niri
     # zsh.nix
-    #
-    #
-    #
     # inputs.agenix.homeManagerModules.default - this style come here
     ];
 
@@ -34,7 +31,6 @@ in {
     programs.zsh = {
         enable = true;
         initContent = ''
-            export PS1='\[\e[38;5;75m\]\u@\h \[\e[38;5;113m\]\w \[\e[38;5;189m\]\$ \[\e[0m\]'
         '';
     };
     #enables my .dotfiles to easily update,
@@ -55,11 +51,11 @@ in {
     };
 
 
-   # dconf = {
-  #  settings."org/gnome/desktop/interface" = {
-  #      color-scheme = "prefer-dark";
-  #   };
-  # };
+   dconf = {
+   settings."org/gnome/desktop/interface" = {
+       color-scheme = "prefer-dark";
+    };
+  };
 
 
     home.packages = with pkgs; [
@@ -94,7 +90,7 @@ in {
         gpu-screen-recorder
         mpv
         brave
-
+        qview
         # niri
         xwayland-satellite
         wl-clipboard
@@ -102,5 +98,28 @@ in {
     ];
     #need to activate it from config, defines per-user configs
     #programs.home-manager.enable = true;
+
+
+  #
+  # services.flatpak = {
+  #   enable = true;
+  #   remotes = [
+  #     {
+  #       name = "flathub";
+  #       location = "https://flathub.org/repo/flathub.flatpakrepo";
+  #       # user = true; # optional,HM module installs per-user by design
+  #     }
+  #   ];
+  #
+  #   packages = [
+  #     # examples
+  #     "com.github.tschx84.Flatseal"
+  #     "org.kde.okular"
+  #     "org.standardnotes.standardnotes"
+  #     "dev.zed.Zed"
+  #   ];
+  #   };
+  #   #uninstallUnmanaged = true; # optional: prunes user flatpaks not in `packages`
+
 }
 
