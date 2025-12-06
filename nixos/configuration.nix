@@ -16,7 +16,8 @@
 
   # Systemd-boot: modern, simple EFI bootloader
   boot.loader.systemd-boot.enable = true;
-
+    security.polkit.enable = true;
+    programs.dconf.enable = true;
   # Allow modifying EFI variables (needed for systemd-boot)
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -85,7 +86,10 @@
     fira-sans                  
     roboto                      
     noto-fonts                  
-    noto-fonts-color-emoji      
+    noto-fonts-color-emoji   
+    material-symbols
+    material-icons
+    polykit_gnome
   ];
 
   environment.systemPackages = with pkgs; [

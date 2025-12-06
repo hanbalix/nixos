@@ -42,6 +42,10 @@ in {
         source = create_symlink "${dotfiles}/keyd/";
     };
 
+      dconf.settings."org/gnome/desktop/interface" = {
+    color-scheme = "prefer-dark";
+  };
+
     # Clipboard Manager - niri
     services.cliphist = {
       enable = true;
