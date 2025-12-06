@@ -55,42 +55,57 @@ in {
       enable = true;
       allowImages = true;
     };
+programs.swaylock = {
+  enable = true;
+  settings = {
+    image = "/home/x/assets/wallpapers/bay.jpeg";
+    };
+};
+services.swayidle = {
+  enable = true;
+  timeouts = [
+    { timeout = 300; command = "${config.programs.swaylock.package}/bin/swaylock -f"; }
+    { timeout = 600; command = "swaymsg 'output * dpms off'"; resumeCommand = "swaymsg 'output * dpms on'"; }
+  ];
+  systemdTarget = "wayland-session.target";  # For Niri
+};
+
 
     home.packages = with pkgs; [
     alacritty
   	ghostty
-	  distrobox
+    distrobox
     #nvim +dependencies
     neovim
     ripgrep
     nil
     gcc
     nodejs
-	  nixpkgs-fmt
-	  go
-	  gopls
-	  python3
+    nixpkgs-fmt
+    go
+    gopls
+    python3
   	# Terminal & Shell Tools
   	htop
- 	  jq
-	  zoxide
-	  starship
-	  bat
-	  fastfetch
-	  nerdfetch
-	  yazi
-	  tmux
-	  eza
-	  fd
-	  tree
-	  #niri
-	  fuzzel
-	  swaybg
-	  swaylock
-  	xwayland-satellite
-	  gpu-screen-recorder
-	  wlsunset
-	  cava
+ 	jq
+	zoxide
+	starship
+	bat
+	fastfetch
+	nerdfetch
+	yazi
+	tmux
+	eza
+	fd
+	tree
+	#niri
+	fuzzel
+	swaybg
+    swaylock
+    xwayland-satellite
+	gpu-screen-recorder
+	wlsunset
+	cava
 #	ddcutil for niri(desktop only)
 	# Theme & Style Configuration
   	kdePackages.qt6ct
