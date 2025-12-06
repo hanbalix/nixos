@@ -81,10 +81,6 @@
   # Flatpak: sandbox container app format
     services.flatpak.enable = true;
 
-  # Tumbler: thumbnail generation for file managers
-  services.tumbler.enable = true;
-
-
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono  
     fira-sans                  
