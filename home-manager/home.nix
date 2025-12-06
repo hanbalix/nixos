@@ -58,39 +58,39 @@ in {
 
     home.packages = with pkgs; [
     alacritty
-	ghostty
-	distrobox
+  	ghostty
+	  distrobox
     #nvim +dependencies
     neovim
     ripgrep
     nil
     gcc
     nodejs
-	nixpkgs-fmt
-	go
-	gopls
-	python3
+	  nixpkgs-fmt
+	  go
+	  gopls
+	  python3
   	# Terminal & Shell Tools
   	htop
- 	jq
-	zoxide
-	starship
-	bat
-	fastfetch
-	nerdfetch
-	yazi
-	tmux
-	eza
-	fd
-	tree
-	#niri
-	fuzzel
-	swaybg
-	swaylock
+ 	  jq
+	  zoxide
+	  starship
+	  bat
+	  fastfetch
+	  nerdfetch
+	  yazi
+	  tmux
+	  eza
+	  fd
+	  tree
+	  #niri
+	  fuzzel
+	  swaybg
+	  swaylock
   	xwayland-satellite
-	gpu-screen-recorder
-	wlsunset
-	cava
+	  gpu-screen-recorder
+	  wlsunset
+	  cava
 #	ddcutil for niri(desktop only)
 	# Theme & Style Configuration
   	kdePackages.qt6ct
