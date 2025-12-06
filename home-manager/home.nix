@@ -9,7 +9,7 @@ in {
     home.stateVersion = "25.11";
 
     imports = [
-    ./config/noctalia/noctalia.nix
+    # ./config/noctalia/noctalia.nix
     ];
 
     programs.git = {
@@ -55,6 +55,7 @@ in {
 
     home.packages = with pkgs; [
     alacritty
+    noctalia-shell
 	ghostty
 	distrobox
     #nvim +dependencies
