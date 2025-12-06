@@ -68,7 +68,7 @@
     alsa.support32Bit = true; # 32-bit ALSA support (for older apps)
   };
 
-    hardware.bluetooth.enable = false;
+    hardware.bluetooth.enable = true;
     services.printing.enable =  false;
     services.power-profiles-daemon.enable = true;
 
@@ -89,13 +89,18 @@
     noto-fonts-color-emoji   
     material-symbols
     material-icons
-    polkit_gnome
   ];
 
   environment.systemPackages = with pkgs; [
     vim                        
     git                         
-    wget                        
+    wget 
+    polkit_gnome
+    xwayland
+    ddcutil
+    papirus-icon-theme
+    kdePackages.qt6ct
+   pkgs.libsForQt5.qt5ct
 ];
 
 
