@@ -9,7 +9,7 @@ in {
     home.stateVersion = "25.11";
 
     imports = [
-    ./config/noctalia/noctalia.nix
+    # ./config/noctalia/noctalia.nix
     ];
     programs.git = {
     enable = true;
@@ -50,7 +50,6 @@ in {
       enable = true;
       allowImages = true;
     };
-
 
     home.packages = with pkgs; [
     alacritty
