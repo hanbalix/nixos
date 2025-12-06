@@ -177,8 +177,8 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-//spawn-sh-at-startup "qs -c ~/.config/quickshell/noctalia-shell/"
-//spawn-sh-at-startup "swaybg -i ~//wallpapers/rose_pine_contourline.png" 
+spawn-sh-at-startup "qs -c ~/.config/quickshell/noctalia-shell/"
+spawn-sh-at-startup "swaybg -i ~//wallpapers/rose_pine_contourline.png" 
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -257,8 +257,8 @@ window-rule {
 }
 
 binds {
-    Mod+B { spawn "brave";}
-    Mod+E { spawn "flatpak" "run" "org.kde.dolphin"; }
+    Mod+B { spawn "trivalent";}
+    Mod+E { spawn "flatpak"  "run" "org.kde.dolphin"; }
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
@@ -508,4 +508,3 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
-include "./noctalia.kdl"
