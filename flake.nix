@@ -36,7 +36,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.x = import ./home-manager/home.nix;
+            users.x = import ./home-manager/home.nix { inherit inputs pkgs;};
             backupFileExtension = "backup";
           };
         }
