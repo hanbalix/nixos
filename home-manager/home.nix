@@ -82,8 +82,6 @@ gtk = {
 	eza
 	fd
 	tree
-	# File Managers
-	kdePackages.dolphin
 	#niri
 	fuzzel
 	swaybg

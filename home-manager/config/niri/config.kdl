@@ -258,7 +258,7 @@ window-rule {
 
 binds {
     Mod+B { spawn "brave";}
-    Mod+E { spawn "dolphin"  "run"; }
+    Mod+E { spawn "flatpak" "run" "org.kde.dolphin"; }
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
