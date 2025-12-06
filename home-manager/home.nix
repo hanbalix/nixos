@@ -67,6 +67,9 @@ services.swayidle = {
     { timeout = 300; command = "${config.programs.swaylock.package}/bin/swaylock -f"; }
     { timeout = 600; command = "swaymsg 'output * dpms off'"; resumeCommand = "swaymsg 'output * dpms on'"; }
   ];
+  events = {
+  before-sleep = "${config.programs.swaylock.package}/bin/swaylock -f";
+  };
   systemdTarget = "wayland-session.target";  # For Niri
 };
 

@@ -46,8 +46,10 @@
     autoRepeatDelay = 200;  # Delay before key repeat starts (ms)
     autoRepeatInterval = 35; # Interval between repeats (ms)
   };
-security.pam.services.swaylock = {};
 
+services.acpid = {
+  enable = true;
+};
   # Libinput: touchpad and input device support
   services.libinput.enable = true;
 

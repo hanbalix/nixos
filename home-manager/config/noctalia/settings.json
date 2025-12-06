@@ -129,6 +129,10 @@
                     "id": "Clock",
                     "useCustomFont": false,
                     "usePrimaryColor": false
+                },
+                {
+                    "colorName": "error",
+                    "id": "SessionMenu"
                 }
             ]
         }
@@ -230,7 +234,7 @@
         "backgroundOpacity": 1,
         "colorizeIcons": false,
         "displayMode": "auto_hide",
-        "enabled": true,
+        "enabled": false,
         "floatingRatio": 1,
         "monitors": [
         ],
