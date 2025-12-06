@@ -107,6 +107,7 @@ in {
 	brave
 	firefox
   	qview
+    tree
     ];
 
 

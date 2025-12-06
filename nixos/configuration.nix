@@ -89,7 +89,7 @@
     noto-fonts-color-emoji   
     material-symbols
     material-icons
-    polykit_gnome
+    polkit_gnome
   ];
 
   environment.systemPackages = with pkgs; [
