@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs,  ... }:
 #symlink for a copy of my dot files
 let
     dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/home-manager/config";
@@ -9,13 +9,8 @@ in {
     home.stateVersion = "25.11";
 
     imports = [
-    inputs.noctalia.homeManagerModules.default
     ./config/noctalia/noctalia.nix
     ];
-    services.noctalia = {
-    enable = true;
-    package = inputs.noctalia.packages.${pkgs.system}.default;
-    };
     programs.git = {
     enable = true;
     settings.user = {
@@ -59,7 +54,6 @@ in {
 
     home.packages = with pkgs; [
     alacritty
-    noctalia-shell
 	ghostty
 	distrobox
     #nvim +dependencies

@@ -33,12 +33,14 @@
         ./nixos/configuration.nix  
         home-manager.nixosModules.default
         {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.x = import ./home-manager/home.nix { inherit inputs pkgs;};
-            backupFileExtension = "backup";
-          };
+    home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };  # This makes inputs available
+    users.x = import ./home-manager/home.nix;
+    backupFileExtension = "backup";
+};
+
         }
       ];
     };
