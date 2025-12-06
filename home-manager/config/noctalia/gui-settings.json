@@ -404,7 +404,7 @@
     },
     "templates": {
         "alacritty": true,
-        "cava": false,
+        "cava": true,
         "code": false,
         "discord": false,
         "emacs": false,
@@ -415,7 +415,7 @@
         "gtk": true,
         "kcolorscheme": true,
         "kitty": false,
-        "niri": false,
+        "niri": true,
         "pywalfox": false,
         "qt": true,
         "spicetify": false,

@@ -48,12 +48,6 @@ in {
       allowImages = true;
     };
 
-gtk = {
-  enable = true;
-  theme.name = "Breeze-Dark";
-  iconTheme.name = "papirus-dark";
-};
-
 
     home.packages = with pkgs; [
     alacritty

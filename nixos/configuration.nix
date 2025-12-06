@@ -67,13 +67,12 @@
     alsa.support32Bit = true; # 32-bit ALSA support (for older apps)
   };
 
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth.enable = false;
     services.printing.enable =  false;
     services.power-profiles-daemon.enable = true;
 
   # UPower: battery and power supply monitoring
     services.upower.enable = true;
-
 
     services.displayManager.ly.enable = true;
     programs.niri.enable = true;
@@ -95,11 +94,6 @@
     wget                        
 ];
 
-environment.sessionVariables = {
-  QT_QPA_PLATFORMTHEME = "qt6ct";
-  QT_STYLE_OVERRIDE = "breeze-dark";
-  QT_QPA_PLATFORM = "wayland";
-};
 
 
   users.users.x = {
