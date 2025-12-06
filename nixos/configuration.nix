@@ -14,8 +14,6 @@
   # System version for state management
   system.stateVersion = "25.11";
 
-  security.polkit.enable = true;
-  security.polkit.agents = [ pkgs.kdePackages.polkit-kde-agent-1 ];
   # Systemd-boot: modern, simple EFI bootloader
   boot.loader.systemd-boot.enable = true;
 
@@ -99,7 +97,6 @@
     vim                        
     git                         
     wget                        
-    pkgs.kdePackages.polkit-kde-agent-1
 ];
 
 environment.sessionVariables = {

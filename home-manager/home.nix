@@ -19,7 +19,6 @@ in {
     email = "x@hanbalix.com";
   };
 };
-
     programs.zsh = {
         enable = true;
         initContent = ''
@@ -113,5 +112,9 @@ gtk = {
 	firefox
   	qview
     ];
+
+
+
+
 }
 
