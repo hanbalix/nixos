@@ -1,4 +1,4 @@
-{ config, pkgs,  ... }:
+{ config, pkgs, inputs,  ... }:
 #symlink for a copy of my dot files
 let
     dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/home-manager/config";
@@ -9,8 +9,13 @@ in {
     home.stateVersion = "25.11";
 
     imports = [
-    # ./config/noctalia/noctalia.nix
+        inputs.noctalia.homeModules.default 
     ];
+
+    programs.noctalia-shell = {
+        enable = true;
+        systemd.enable = true;
+        };
     programs.git = {
     enable = true;
     settings.user = {

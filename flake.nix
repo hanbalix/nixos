@@ -30,7 +30,8 @@
       system = "x86_64-linux";
       specialArgs = { inherit self nixpkgs home-manager inputs; };
       modules = [
-        ./nixos/configuration.nix  
+        ./nixos/configuration.nix 
+        ./home-manager/config/noctalia/noctalia.nix
         home-manager.nixosModules.default
         {
     home-manager = {
