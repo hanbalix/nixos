@@ -53,7 +53,8 @@ return {
                     "dockerfile",
                     "gitignore",
                     "astro",
-                    "go"
+                    "go",
+                    "nix"
                 },
                 -- auto install above language parsers
                 auto_install = false,

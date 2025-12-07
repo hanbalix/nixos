@@ -92,6 +92,7 @@ services.swayidle = {
     gcc
     nodejs
     nixpkgs-fmt
+    alejandra
     go
     gopls
     python3
@@ -103,6 +104,8 @@ services.swayidle = {
 	bat
 	fastfetch
 	nerdfetch
+    uwufetch
+    pfetch
 	yazi
 	tmux
 	eza
