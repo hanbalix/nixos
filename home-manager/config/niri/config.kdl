@@ -1,12 +1,29 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://yalter.github.io/niri/Configuration:-Introduction
-
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://yalter.github.io/niri/Configuration:-Input
 prefer-no-csd
+
+//noctalia settings start:
+spawn-at-startup "qs" "-c" "noctalia-shell"
+
+window-rule {
+  // Rounded corners for a modern look.
+  geometry-corner-radius 20
+
+  // Clips window contents to the rounded corner boundaries.
+  clip-to-geometry true
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
+// Set the overview wallpaper on the backdrop.
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
+// noctalia end
+
+
+
 input {
     keyboard {
         
@@ -257,7 +274,7 @@ window-rule {
 }
 
 binds {
-    Mod+B { spawn "trivalent";}
+    Mod+B { spawn "brave";}
     Mod+E { spawn "flatpak"  "run" "org.kde.dolphin"; }
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
@@ -503,7 +520,7 @@ binds {
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
-
+Mod+Alt+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
