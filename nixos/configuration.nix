@@ -14,21 +14,32 @@
   system.stateVersion = "25.11";
 
   # Systemd-boot: modern, simple EFI bootloader
-  boot.loader.systemd-boot.enable = true;
-    security.polkit.enable = true;
-    programs.dconf.enable = true;
-  # Allow modifying EFI variables (needed for systemd-boot)
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.loader.grub = {
+    enable = lib.mkForce true;
+    device = "nodev";
+    efiSupport = true;
+    # useOSProber = true; for dual booting
+    };
+
+  boot.loader.efi = {
+    canTouchEfiVariables = true;
+    efiSysMountPoint = "/boot";
+    };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableRedistributableFirmware = true;
-
+  #for openGL 
+  hardware.graphics.enable = false;
+    
+  security.polkit.enable = true;
+  programs.dconf.enable = true;
 
 programs.zsh.enable = true;
 
   services.keyd = {
     enable = true;
     keyboards.default = {
-      ids = [ "*" ];
+  ids = [ "*" ];
       settings = {
         main = {
           shift = "oneshot(shift)";
@@ -99,7 +110,8 @@ programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
     vim                        
     git                         
-    wget 
+    wget
+
 ];
 
 
@@ -109,10 +121,7 @@ programs.zsh.enable = true;
     extraGroups = [
       "wheel"           # Sudoers group (can use sudo)
       "networkmanager"  # Manage network connections
-      "plugdev"         # Access USB devices
-      "i2c"             # Access I2C devices (display backlight, etc.)
       "video"           # Access GPU and display
-      "input"           # Access input devices
       "keyd"            # Use keyd keyboard remapping daemon
     ];
     shell =  pkgs.zsh;

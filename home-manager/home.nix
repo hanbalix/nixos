@@ -80,66 +80,69 @@ services.swayidle = {
 };
 
 
-    home.packages = with pkgs; [
-    alacritty
-  	ghostty
-    distrobox
-    podman
-    #nvim +dependencies
-    neovim
-    ripgrep
-    nil
-    gcc
-    nodejs
-    nixpkgs-fmt
-    alejandra
-    go
-    gopls
-    python3
-  	# Terminal & Shell Tools
-  	htop
- 	jq
-	zoxide
-	starship
+  home.packages = with pkgs; [
+  alacritty
+  ghostty
+  distrobox
+  podman
+  #nvim +dependencies
+  neovim
+  ripgrep
+  gcc
+  nodejs
+  nixpkgs-fmt
+  alejandra
+  nil
+  go    
+  gopls
+  python3
+  # Terminal & Shell Tools
+  htop
+  jq
+  zoxide
+  starship
 	bat
 	fastfetch
 	nerdfetch
-    uwufetch
-    pfetch
+    # uwufetch
+
+  pfetch
 	yazi
 	tmux
 	eza
 	fd
 	tree
+  tldr
 	#niri
 	fuzzel
 	swaybg
-    swaylock
-    xwayland-satellite
+  swaylock
+  xwayland-satellite
 	gpu-screen-recorder
 	wlsunset
-	cava
+  brightnessctl
 #	ddcutil for niri(desktop only)
-	# Theme & Style Configuration
-  	kdePackages.qt6ct
-  	pkgs.libsForQt5.qt5ct
-  	kdePackages.breeze
-  	kdePackages.breeze-gtk
-  	kdePackages.systemsettings
-  	# Audio Control
-  	pavucontrol
-  	pulseaudio
-  	playerctl
-  	# System Utilities
-  	networkmanagerapplet
-	pkgs.unzip
+# Theme & Style Configuration
+	kdePackages.qt6ct
+  pkgs.libsForQt5.qt5ct
+  kdePackages.breeze
+  kdePackages.breeze-gtk
+  kdePackages.systemsettings
+# Audio Control
+  pavucontrol
+  pulseaudio
+  playerctl
+# System Utilities
+  networkmanagerapplet
+	zip
+  unzip
  	# Media & Applications
 	mpv
 	brave
 	firefox
-  	qview
-    tree
-    ];
+  qview
+  tree
+  ];
 
 
 
