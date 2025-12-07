@@ -8,6 +8,19 @@
 let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/home-manager/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+
+  configs = {
+    nvim = "nvim";
+    niri = "niri";
+    noctalia = "noctalia";
+    ghostty = "ghostty";
+    zsh = "zsh";
+    starship = "starship";
+    xdg = "xdg";
+    keyd = "keyd";
+    tmux = "tmux";
+    };
+
 in {
   home.username = "x";
   home.homeDirectory = "/home/x";
@@ -33,39 +46,7 @@ in {
       email = "x@hanbalix.com";
     };
   };
-  # programs.starship.enable = true;
-  # programs.zsh = {
-  # enable = false;
-  # };
-  #enables my .dotfiles to easily update,
-  xdg.configFile."nvim" = {
-    source = create_symlink "${dotfiles}/nvim/";
-    recursive = true;
-  };
 
-  xdg.configFile."noctalia" = {
-    source = create_symlink "${dotfiles}/noctalia/";
-    recursive = true;
-  };
-  xdg.configFile."niri" = {
-    source = create_symlink "${dotfiles}/niri/";
-    recursive = true;
-  };
-  xdg.configFile."keyd" = {
-    source = create_symlink "${dotfiles}/keyd/";
-  };
-
-  xdg.configFile."zsh" = {
-    source = create_symlink "${dotfiles}/zsh/";
-  };
-  xdg.configFile."starship" = {
-    source = create_symlink "${dotfiles}/starship/";
-  };
-  dconf.settings."org/gnome/desktop/interface" = {
-    color-scheme = "prefer-dark";
-  };
-
-  # Clipboard Manager - niri
   services.cliphist = {
     enable = true;
     allowImages = true;
@@ -76,17 +57,6 @@ in {
       image = "/home/x/assets/wallpapers/bay.jpeg";
     };
   };
-  # services.swayidle = {
-  # enable = true;
-  # timeouts = [
-  # { timeout = 300; command = "${config.programs.swaylock.package}/bin/swaylock -f"; }
-  # { timeout = 600; command = "swaymsg 'output * dpms off'"; resumeCommand = "swaymsg 'output * dpms on'"; }
-  # ];
-  # events = {
-  # before-sleep = "${config.programs.swaylock.package}/bin/swaylock -f";
-  # };
-  # systemdTarget = "wayland-session.target";  # For Niri
-  # };
 
   home.packages = with pkgs; [
     alacritty
@@ -152,6 +122,13 @@ in {
     qview
     tree
   ];
+
+  xdg.configFile = builtins.mapAttrs
+    (name: subpath: {
+      source = create_symlink "${dotfiles}/${subpath}";
+      recursive = true;
+    })
+    configs;
 
   home.enableNixpkgsReleaseCheck = false;
 }

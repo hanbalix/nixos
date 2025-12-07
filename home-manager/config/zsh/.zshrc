@@ -46,7 +46,7 @@ alias ll="eza --icons -l"
 alias la="eza --icons -la"
 alias cat="bat"
 alias vim='nvim'
-alias c='clear'
+alias clear='c'
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
