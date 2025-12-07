@@ -1,10 +1,14 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 #symlink for a copy of my dot files
 let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/home-manager/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
-in
-{
+in {
   home.username = "x";
   home.homeDirectory = "/home/x";
   home.stateVersion = "25.11";
@@ -13,8 +17,7 @@ in
     inputs.noctalia.homeModules.default
     ../modules/home-manager/zsh/zsh.nix
     ../modules/home-manager/swayidle/swayidle.nix
-    ../modules/home-manager/lsp/lsp.nix
-
+    # ../modules/home-manager/lsp/lsp.nix
   ];
   #nvim recognize lsps
   # home.sessionVariables.PATH = "/etc/profiles/per-user/x/bin:$PATH";
@@ -85,7 +88,6 @@ in
   # systemdTarget = "wayland-session.target";  # For Niri
   # };
 
-
   home.packages = with pkgs; [
     alacritty
     ghostty
@@ -151,9 +153,5 @@ in
     tree
   ];
 
-
-
-
   home.enableNixpkgsReleaseCheck = false;
 }
-
