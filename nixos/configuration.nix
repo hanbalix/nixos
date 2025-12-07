@@ -10,7 +10,6 @@
 
   # Enable Nix flakes and nix-command experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   # System version for state management
   system.stateVersion = "25.11";
 
@@ -22,6 +21,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableRedistributableFirmware = true;
+
+
+programs.zsh.enable = true;
 
   services.keyd = {
     enable = true;
@@ -47,9 +49,6 @@
     autoRepeatInterval = 35; # Interval between repeats (ms)
   };
 
-services.acpid = {
-  enable = true;
-};
   # Libinput: touchpad and input device support
   services.libinput.enable = true;
 
@@ -64,17 +63,18 @@ services.acpid = {
 
 
   # Pipewire: modern audio server (replaces PulseAudio)
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;      # PulseAudio compatibility layer
-    alsa.enable = true;       # ALSA support
-    alsa.support32Bit = true; # 32-bit ALSA support (for older apps)
-  };
+  # services.pipewire = {
+  #   enable = true;
+  #   pulse.enable = true;      # PulseAudio compatibility layer
+  #   alsa.enable = true;       # ALSA support
+  #   alsa.support32Bit = true; # 32-bit ALSA support (for older apps)
+  # };
 
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth.enable = false;
     services.printing.enable =  false;
-    services.power-profiles-daemon.enable = true;
-
+    #for noctalia i have 2 options for pwr profiles
+    # services.power-profiles-daemon.enable = true;
+    services.tuned.enable = true;
   # UPower: battery and power supply monitoring
     services.upower.enable = true;
 
@@ -94,16 +94,12 @@ services.acpid = {
     material-icons
   ];
 
+
+
   environment.systemPackages = with pkgs; [
     vim                        
     git                         
     wget 
-    polkit_gnome
-    xwayland
-    ddcutil
-    papirus-icon-theme
-    kdePackages.qt6ct
-   pkgs.libsForQt5.qt5ct
 ];
 
 
@@ -119,9 +115,7 @@ services.acpid = {
       "input"           # Access input devices
       "keyd"            # Use keyd keyboard remapping daemon
     ];
-    packages = with pkgs; [
-      tree              
-    ];
+    shell =  pkgs.zsh;
   };
 
 

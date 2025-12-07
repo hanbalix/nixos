@@ -10,6 +10,7 @@ in {
 
     imports = [
         inputs.noctalia.homeModules.default 
+        ../modules/home-manager/zsh/zsh.nix
     ];
 
     programs.noctalia-shell = {
@@ -23,11 +24,10 @@ in {
     email = "x@hanbalix.com";
   };
 };
-    programs.zsh = {
-        enable = true;
-        initContent = ''
-        '';
-    };
+    # programs.starship.enable = true;
+    # programs.zsh = {
+        # enable = false;
+    # };
     #enables my .dotfiles to easily update,
     xdg.configFile."nvim" = {
         source = create_symlink "${dotfiles}/nvim/";
@@ -46,6 +46,12 @@ in {
         source = create_symlink "${dotfiles}/keyd/";
     };
 
+    xdg.configFile."zsh" = {
+        source = create_symlink "${dotfiles}/zsh/";
+    };
+    xdg.configFile."starship" = {
+        source = create_symlink "${dotfiles}/starship/";
+    };
       dconf.settings."org/gnome/desktop/interface" = {
     color-scheme = "prefer-dark";
   };
@@ -78,6 +84,7 @@ services.swayidle = {
     alacritty
   	ghostty
     distrobox
+    podman
     #nvim +dependencies
     neovim
     ripgrep
@@ -134,5 +141,6 @@ services.swayidle = {
 
 
 
+home.enableNixpkgsReleaseCheck = false ;
 }
 
