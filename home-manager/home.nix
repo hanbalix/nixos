@@ -11,6 +11,8 @@ in {
     imports = [
         inputs.noctalia.homeModules.default 
         ../modules/home-manager/zsh/zsh.nix
+        ../modules/home-manager/swayidle/swayidle.nix
+
     ];
 
     programs.noctalia-shell = {
@@ -67,17 +69,17 @@ programs.swaylock = {
     image = "/home/x/assets/wallpapers/bay.jpeg";
     };
 };
-services.swayidle = {
-  enable = true;
-  timeouts = [
-    { timeout = 300; command = "${config.programs.swaylock.package}/bin/swaylock -f"; }
-    { timeout = 600; command = "swaymsg 'output * dpms off'"; resumeCommand = "swaymsg 'output * dpms on'"; }
-  ];
-  events = {
-  before-sleep = "${config.programs.swaylock.package}/bin/swaylock -f";
-  };
-  systemdTarget = "wayland-session.target";  # For Niri
-};
+# services.swayidle = {
+  # enable = true;
+  # timeouts = [
+    # { timeout = 300; command = "${config.programs.swaylock.package}/bin/swaylock -f"; }
+    # { timeout = 600; command = "swaymsg 'output * dpms off'"; resumeCommand = "swaymsg 'output * dpms on'"; }
+  # ];
+  # events = {
+  # before-sleep = "${config.programs.swaylock.package}/bin/swaylock -f";
+  # };
+  # systemdTarget = "wayland-session.target";  # For Niri
+# };
 
 
   home.packages = with pkgs; [

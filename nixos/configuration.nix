@@ -7,7 +7,6 @@
     # ./config/xdg/xdg.nix
   ];
 
-
   # Enable Nix flakes and nix-command experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # System version for state management
