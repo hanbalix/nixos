@@ -31,6 +31,7 @@
       # cbprint = "wl-paste";
       v = "nvim";
       vim = "nvim";
+      c = "clear";
       #sv = "sudo nvim";
       # hs = "home-manager switch --flake .";
       # list-gens =

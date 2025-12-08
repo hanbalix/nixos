@@ -1,8 +1,8 @@
 #this goes in my config file
 # add this to my configuration file
 # "${self}/system/packages.nix" but fix file path
-
 {
+config,
   pkgs,
   ...
 }:
@@ -10,10 +10,17 @@
 {
   xdg.portal = {
     enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+      # xdg-desktop-portal-kde  # <--- add this for Dolphin KDE support
+    ];
     config = {
-      #common.default = "*";
       common = {
         default = [
+          "kde"
           "gtk"
           "gnome"
         ];
@@ -22,14 +29,6 @@
         "org.freedesktop.impl.portal.RemoteDesktop" = "gtk";
       };
     };
-    xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal
-      #  xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
-
-      # Niri
-      xdg-desktop-portal-gnome
-    ];
   };
 }
+

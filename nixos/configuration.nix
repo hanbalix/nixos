@@ -4,7 +4,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./t14/hardware-configuration.nix
-    # ./config/xdg/xdg.nix
+    ../home-manager/config/xdg/xdg.nix
   ];
 
   # Enable Nix flakes and nix-command experimental features
@@ -110,7 +110,6 @@
     vim
     git
     wget
-
   ];
 
 
