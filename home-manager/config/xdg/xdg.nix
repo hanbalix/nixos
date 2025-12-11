@@ -14,7 +14,8 @@ config,
     extraPortals = with pkgs; [
       xdg-desktop-portal
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
+      xdg-desktop-portal-wlr
+      # xdg-desktop-portal-gnome
       # xdg-desktop-portal-kde  # <--- add this for Dolphin KDE support
     ];
     config = {
@@ -24,8 +25,8 @@ config,
           "gtk"
           "gnome"
         ];
-        "org.freedesktop.impl.portal.ScreenCast" = "gnome";
-        "org.freedesktop.impl.portal.Screenshot" = "gnome";
+        "org.freedesktop.impl.portal.ScreenCast" = "gtk";  # was gnome
+        "org.freedesktop.impl.portal.Screenshot" = "gtk"; # was gnome
         "org.freedesktop.impl.portal.RemoteDesktop" = "gtk";
       };
     };

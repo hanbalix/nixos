@@ -4,9 +4,11 @@
   imports = [
     # Include the results of the hardware scan.
     ./t14/hardware-configuration.nix
+    # ./config/xdg/xdg.nix
     ../home-manager/config/xdg/xdg.nix
   ];
 
+# programs.xss-lock = {enable = true;};
   # Enable Nix flakes and nix-command experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # System version for state management
@@ -19,26 +21,25 @@
     device = "nodev";
     efiSupport = true;
     # useOSProber = true; for dual booting
-  };
+    };
 
   boot.loader.efi = {
     canTouchEfiVariables = true;
     efiSysMountPoint = "/boot";
-  };
+    };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableRedistributableFirmware = true;
   #for openGL 
-  hardware.graphics.enable = false;
-
+  hardware.graphics.enable = true;
   security.polkit.enable = true;
   programs.dconf.enable = true;
 
-  programs.zsh.enable = true;
+programs.zsh.enable = true;
 
   services.keyd = {
     enable = true;
     keyboards.default = {
-      ids = [ "*" ];
+  ids = [ "*" ];
       settings = {
         main = {
           shift = "oneshot(shift)";
@@ -46,18 +47,18 @@
           control = "oneshot(control)";
           leftalt = "oneshot(alt)";
           rightalt = "oneshot(altgr)";
-          capslock = "overload(control, esc)";
+          capslock = "overload(control, esc)"; 
           insert = "S-insert";
         };
       };
     };
   };
 
-  services.xserver = {
-    enable = true;
-    autoRepeatDelay = 200; # Delay before key repeat starts (ms)
-    autoRepeatInterval = 35; # Interval between repeats (ms)
-  };
+  # services.xserver = {
+  #   enable = true;
+  #   autoRepeatDelay = 200;  # Delay before key repeat starts (ms)
+  #   autoRepeatInterval = 35; # Interval between repeats (ms)
+  # };
 
   # Libinput: touchpad and input device support
   services.libinput.enable = true;
@@ -80,26 +81,26 @@
   #   alsa.support32Bit = true; # 32-bit ALSA support (for older apps)
   # };
 
-  hardware.bluetooth.enable = false;
-  services.printing.enable = false;
-  #for noctalia i have 2 options for pwr profiles
-  # services.power-profiles-daemon.enable = true;
-  services.tuned.enable = true;
+    hardware.bluetooth.enable = false;
+    services.printing.enable =  false;
+    #for noctalia i have 2 options for pwr profiles
+    # services.power-profiles-daemon.enable = true;
+    services.tuned.enable = true;
   # UPower: battery and power supply monitoring
-  services.upower.enable = true;
+    services.upower.enable = true;
 
-  services.displayManager.ly.enable = true;
-  programs.niri.enable = true;
+    services.displayManager.ly.enable = true;
+    programs.niri.enable = true;
 
   # Flatpak: sandbox container app format
-  services.flatpak.enable = true;
+    services.flatpak.enable = true;
 
   fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    fira-sans
-    roboto
-    noto-fonts
-    noto-fonts-color-emoji
+    nerd-fonts.jetbrains-mono  
+    fira-sans                  
+    roboto                      
+    noto-fonts                  
+    noto-fonts-color-emoji   
     material-symbols
     material-icons
   ];
@@ -107,29 +108,30 @@
 
 
   environment.systemPackages = with pkgs; [
-    vim
-    git
+    vim                        
+    git                         
     wget
-  ];
+
+];
 
 
 
   users.users.x = {
     isNormalUser = true;
     extraGroups = [
-      "wheel" # Sudoers group (can use sudo)
-      "networkmanager" # Manage network connections
-      "video" # Access GPU and display
-      "keyd" # Use keyd keyboard remapping daemon
+      "wheel"           # Sudoers group (can use sudo)
+      "networkmanager"  # Manage network connections
+      "video"           # Access GPU and display
+      "keyd"            # Use keyd keyboard remapping daemon
     ];
-    shell = pkgs.zsh;
+    shell =  pkgs.zsh;
   };
 
 
   nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
+    automatic = true;               
+    dates = "weekly"; 
+    options = "--delete-older-than 30d"; 
   };
 
 

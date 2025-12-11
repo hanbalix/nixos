@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager,  ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit self nixpkgs nixpkgs-unstable home-manager inputs; };
@@ -38,11 +38,10 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = { inherit inputs; }; # This makes inputs available
+            extraSpecialArgs = { inherit inputs;}; # This makes inputs available
             users.x = import ./home-manager/home.nix;
             backupFileExtension = "backup";
           };
-
         }
       ];
     };

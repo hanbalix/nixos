@@ -25,8 +25,6 @@
       ".." = "cd ..";
       rebuild = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos";
 
-
-
       # cbread = "wl-copy";
       # cbprint = "wl-paste";
       v = "nvim";
