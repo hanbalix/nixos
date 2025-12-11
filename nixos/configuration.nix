@@ -6,6 +6,8 @@
     ./t14/hardware-configuration.nix
     # ./config/xdg/xdg.nix
     ../home-manager/config/xdg/xdg.nix
+    ../modules/nixos/vm.nix
+    # ../modules/nixos/keyd.nix
   ];
 
 # programs.xss-lock = {enable = true;};
