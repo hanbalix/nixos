@@ -4,7 +4,7 @@
 
   programs.dconf.enable = true;
 
-  users.users.x.extraGroups = [ "libvirt" "kvm" ];
+  users.users.x.extraGroups = [ "libvirt" "libvirtd" "kvm" ];
   boot.kernelModules = [ "kvm-amd" ];
   environment.systemPackages = with pkgs; [
     virt-manager

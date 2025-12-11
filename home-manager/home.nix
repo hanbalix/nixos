@@ -66,6 +66,7 @@ qt = {
 
   home.packages = with pkgs; [
     ghostty
+    kitty
     distrobox
     podman
     #nvim +dependencies
