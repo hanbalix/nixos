@@ -7,7 +7,8 @@
     # ./config/xdg/xdg.nix
     ../home-manager/config/xdg/xdg.nix
     ../modules/nixos/vm.nix
-    # ../modules/nixos/keyd.nix
+    ../modules/nixos/keyd.nix
+    # ../modules/nixos/audio.nix
   ];
 
 # programs.xss-lock = {enable = true;};
@@ -36,25 +37,6 @@
   security.polkit.enable = true;
   programs.dconf.enable = true;
 
-programs.zsh.enable = true;
-
-  services.keyd = {
-    enable = true;
-    keyboards.default = {
-  ids = [ "*" ];
-      settings = {
-        main = {
-          shift = "oneshot(shift)";
-          meta = "oneshot(meta)";
-          control = "oneshot(control)";
-          leftalt = "oneshot(alt)";
-          rightalt = "oneshot(altgr)";
-          capslock = "overload(control, esc)"; 
-          insert = "S-insert";
-        };
-      };
-    };
-  };
 
   # services.xserver = {
   #   enable = true;
@@ -68,21 +50,12 @@ programs.zsh.enable = true;
   # Set hostname
   networking.hostName = "nix";
 
-  # NetworkManager: simple network connection management
   networking.networkmanager.enable = true;
 
-
   time.timeZone = "America/Chicago";
-
-
-  # Pipewire: modern audio server (replaces PulseAudio)
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;      # PulseAudio compatibility layer
-  #   alsa.enable = true;       # ALSA support
-  #   alsa.support32Bit = true; # 32-bit ALSA support (for older apps)
-  # };
-
+    
+  programs.zsh.enable = true;
+  
     hardware.bluetooth.enable = false;
     services.printing.enable =  false;
     #for noctalia i have 2 options for pwr profiles
@@ -94,7 +67,6 @@ programs.zsh.enable = true;
     services.displayManager.ly.enable = true;
     programs.niri.enable = true;
 
-  # Flatpak: sandbox container app format
     services.flatpak.enable = true;
 
   fonts.packages = with pkgs; [
@@ -120,15 +92,14 @@ programs.zsh.enable = true;
 
   users.users.x = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     extraGroups = [
       "wheel"           # Sudoers group (can use sudo)
       "networkmanager"  # Manage network connections
       "video"           # Access GPU and display
       "keyd"            # Use keyd keyboard remapping daemon
     ];
-    shell =  pkgs.zsh;
   };
-
 
   nix.gc = {
     automatic = true;               

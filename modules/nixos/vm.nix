@@ -2,13 +2,10 @@
 
 {
 
-  # Enable dconf (System Management Tool)
   programs.dconf.enable = true;
 
-  # Add user to libvirtd group
-  users.users.x.extraGroups = [ "libvirtd" ];
-
-  # Install necessary packages
+  users.users.x.extraGroups = [ "libvirt" "kvm" ];
+  boot.kernelModules = [ "kvm-amd" ];
   environment.systemPackages = with pkgs; [
     virt-manager
     virt-viewer
@@ -19,14 +16,11 @@
     adwaita-icon-theme
   ];
 
-  # Manage the virtualisation services
   virtualisation = {
     libvirtd = {
       enable = true;
-      qemu = {
-        swtpm.enable = true;
+      qemu.swtpm.enable = true;
       };
-    };
     spiceUSBRedirection.enable = true;
   };
   services.spice-vdagentd.enable = true;
