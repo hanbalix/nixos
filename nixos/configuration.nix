@@ -7,6 +7,8 @@
     ../home-manager/config/xdg/xdg.nix
     ../modules/nixos/vm.nix
     ../modules/nixos/keyd.nix
+    ../modules/nixos/podman.nix
+    # ../modules/nixos/docker.nix
     # ../modules/nixos/audio.nix
   ];
 

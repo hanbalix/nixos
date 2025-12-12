@@ -30,6 +30,7 @@ in {
     inputs.noctalia.homeModules.default
     ../modules/home-manager/zsh/zsh.nix
     ../modules/home-manager/swayidle/swayidle.nix
+    ../modules/home-manager/containers/distrobox.nix
     # ../modules/home-manager/lsp/lsp.nix
   ];
   #nvim recognize lsps
@@ -58,36 +59,18 @@ in {
     };
   };
 
-# qt = {
-#     enable = true;
-#     platformTheme.name = "qt6ct";
-#     style.name = "Breeze";
-#   };
-
-# gtk = {
-#   enable = true;
-#   theme.name = "Adwaita-dark";
-#   gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
-#   gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
-# };
-#
-# home.sessionVariables = {
-#   GTK_THEME = "Adwaita:dark";
-# };
 
 
   home.packages = with pkgs; [
     ghostty
     kitty
-    distrobox
-    podman
     #nvim +dependencies
-    neovim
+    # neovim
     ripgrep
     gcc
     nodejs
     go
-    gopls
+    # gopls
     python3
     python313Packages.pyqt6
     python313Packages.pillow
