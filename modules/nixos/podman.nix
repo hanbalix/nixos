@@ -13,8 +13,8 @@
   users.users.x = {
     isNormalUser = true;
     extraGroups = [ "podman" ];
-    subUidRanges = [ { count = 65536; startUid = 1000; } ];
-    subGidRanges = [ { count = 65536; startGid = 1000; } ];
-  };
+    subUidRanges = [ { startUid = 100000; count = 65536; } ];
+    subGidRanges = [ { startGid = 100000; count = 65536; } ];
+};
 }
 

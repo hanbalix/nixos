@@ -64,13 +64,14 @@ in {
   home.packages = with pkgs; [
     ghostty
     kitty
+    docker
     #nvim +dependencies
-    # neovim
+    neovim
     ripgrep
     gcc
     nodejs
     go
-    # gopls
+    gopls
     python3
     python313Packages.pyqt6
     python313Packages.pillow
