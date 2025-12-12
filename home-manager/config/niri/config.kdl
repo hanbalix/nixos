@@ -21,6 +21,14 @@ layer-rule {
 // noctalia end
 
 
+environment {
+    GTK_THEME "Adwaita:dark"
+    QT_STYLE_OVERRIDE "Breeze"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+}
+// environment {
+//     GTK_THEME "Adwaita:dark"
+// }
 
 input {
     keyboard {

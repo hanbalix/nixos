@@ -58,11 +58,23 @@ in {
     };
   };
 
-qt = {
-    enable = true;
-    platformTheme.name = "qt6ct";
-    style.name = "Breeze";
-  };
+# qt = {
+#     enable = true;
+#     platformTheme.name = "qt6ct";
+#     style.name = "Breeze";
+#   };
+
+# gtk = {
+#   enable = true;
+#   theme.name = "Adwaita-dark";
+#   gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+#   gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
+# };
+#
+# home.sessionVariables = {
+#   GTK_THEME = "Adwaita:dark";
+# };
+
 
   home.packages = with pkgs; [
     ghostty

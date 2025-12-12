@@ -2,7 +2,6 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./t14/hardware-configuration.nix
     # ./config/xdg/xdg.nix
     ../home-manager/config/xdg/xdg.nix
@@ -12,9 +11,7 @@
   ];
 
 # programs.xss-lock = {enable = true;};
-  # Enable Nix flakes and nix-command experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  # System version for state management
   system.stateVersion = "25.11";
 
   # Systemd-boot: modern, simple EFI bootloader
@@ -32,7 +29,6 @@
     };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableRedistributableFirmware = true;
-  #for openGL 
   hardware.graphics.enable = true;
   security.polkit.enable = true;
   programs.dconf.enable = true;
@@ -47,9 +43,7 @@
   # Libinput: touchpad and input device support
   services.libinput.enable = true;
 
-  # Set hostname
   networking.hostName = "nix";
-
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Chicago";
