@@ -19,8 +19,7 @@ let
     keyd = "keyd";
     tmux = "tmux";
     yazi = "yazi";
-    };
-
+  };
 in {
   home.username = "x";
   home.homeDirectory = "/home/x";
@@ -31,6 +30,7 @@ in {
     ../modules/home-manager/zsh/zsh.nix
     ../modules/home-manager/swayidle/swayidle.nix
     ../modules/home-manager/containers/distrobox.nix
+    ../modules/home-manager/xdg_mime/xdg_mime.nix
     # ../modules/home-manager/lsp/lsp.nix
   ];
   #nvim recognize lsps
@@ -58,8 +58,6 @@ in {
       image = "/home/x/assets/wallpapers/bay.jpeg";
     };
   };
-
-
 
   home.packages = with pkgs; [
     ghostty
@@ -129,53 +127,16 @@ in {
     tree
     kdePackages.okular
   ];
-# home.sessionVariables.QT_ICON_THEME = "breeze";
-# home.sessionVariables.QT_QPA_PLATFORMTHEME = "qt6ct";
+  # home.sessionVariables.QT_ICON_THEME = "breeze";
+  # home.sessionVariables.QT_QPA_PLATFORMTHEME = "qt6ct";
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
   };
-  
-  xdg.mimeApps = {
-    enable = true; 
-    defaultApplications = {
-      "image/jpeg" = [ "qview.desktop" ];
-      "image/png" = [ "qview.desktop" ];
-      "image/gif" = [ "qview.desktop" ];
-      "image/webp" = [ "qview.desktop" ];
-      "application/pdf" = [ "org.kde.okular.desktop" ];
-      "application/epub+zip" = [ "org.kde.okular.desktop" ];
-      "text/plain" = [ "nvim.desktop" ];
-      "text/x-nix" = [ "nvim.desktop" ];
-      "text/x-go" = [ "nvim.desktop" ];
-      "text/x-c" = [ "nvim.desktop" ];
-      "text/x-c++src" = [ "nvim.desktop" ];
-      "application/json" = [ "nvim.desktop" ];
-      "text/json" = [ "nvim.desktop" ];
-      "text/x-lua" = [ "nvim.desktop" ];
-      "text/x-python" = [ "nvim.desktop" ];
-      "text/rust" = [ "nvim.desktop" ];
-      "text/x-rust" = [ "nvim.desktop" ];
-      "application/javascript" = [ "nvim.desktop" ];
-      "text/javascript" = [ "nvim.desktop" ];
-      "text/x-shellscript" = [ "nvim.desktop" ];
-      "application/x-shellscript" = [ "nvim.desktop" ];
-      "application/toml" = [ "nvim.desktop" ];
-      "application/x-yaml" = [ "nvim.desktop" ];
-      "text/markdown" = [ "nvim.desktop" ];
-      "video/mp4" = [ "org.videolan.VLC.desktop" ];
-      "video/mpeg" = [ "org.videolan.VLC.desktop" ];
-      "audio/mpeg" = [ "org.videolan.VLC.desktop" ]; # .mp3
-      "audio/flac" = [ "org.videolan.VLC.desktop" ];
-      "audio/x-wav" = [ "org.videolan.VLC.desktop" ];
-      "audio/mp4" = [ "org.videolan.VLC.desktop" ];
-      # "inode/directory" = [ "org.kde.dolphin.desktop" ];
-      "inode/directory" = [ "dolphin.desktop" ];
-    };
-  };
-  
-  xdg.configFile = builtins.mapAttrs
+
+  xdg.configFile =
+    builtins.mapAttrs
     (name: subpath: {
       source = create_symlink "${dotfiles}/${subpath}";
       recursive = true;
@@ -184,4 +145,3 @@ in {
 
   home.enableNixpkgsReleaseCheck = false;
 }
-

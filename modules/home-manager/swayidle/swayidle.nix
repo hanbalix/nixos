@@ -1,5 +1,4 @@
-{ config, pkgs, settings, ... }: {
-
+{pkgs, ...}: {
   services.swayidle = let
     lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
     display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
@@ -15,7 +14,7 @@
         command = lock;
       }
       {
-        timeout = 310; 
+        timeout = 310;
         command = display "off";
         resumeCommand = display "on";
       }
@@ -32,4 +31,3 @@
     };
   };
 }
-

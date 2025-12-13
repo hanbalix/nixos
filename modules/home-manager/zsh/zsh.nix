@@ -1,4 +1,9 @@
-{ config, pkgs, settings, ... }: {
+{
+  config,
+  pkgs,
+  settings,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     # enableCompletion = false;
@@ -33,7 +38,7 @@
       #sv = "sudo nvim";
       # hs = "home-manager switch --flake .";
       # list-gens =
-        # "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system/";
+      # "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system/";
       # update-input = "nix flake update $@";
       y = "yazi";
       gs = "git status --short";
@@ -61,7 +66,6 @@
     history.path = "${config.xdg.dataHome}/zsh/history";
 
     # initContent = builtins.readFile ./widgets.zsh;
-
   };
 
   programs.direnv = {
@@ -70,10 +74,9 @@
     nix-direnv.enable = true;
   };
 
-programs.zsh.initContent = ''
-  eval "$(starship init zsh)"
-'';
-
+  programs.zsh.initContent = ''
+    eval "$(starship init zsh)"
+  '';
 
   programs.fzf.enable = true;
   programs.fzf.enableZshIntegration = true;
@@ -86,6 +89,4 @@ programs.zsh.initContent = ''
   # programs.alacritty.enableZshIntegration = true;
   # programs.starship.enableZshIntegration = true;
   programs.atuin.enableZshIntegration = true;
-
 }
-

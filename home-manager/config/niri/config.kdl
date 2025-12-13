@@ -354,3 +354,4 @@ Mod+S { spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
 // Mod+Comma { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
     Mod+Shift+P { power-off-monitors; }
 }
+include "./noctalia.kdl"
